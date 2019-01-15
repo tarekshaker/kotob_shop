@@ -1,0 +1,36 @@
+{% extends 'base.html.twig'%}
+
+{% block body %}
+<!--Header-part-->
+<div id="header">
+    <h1><a href="/admin">Matrix Admin</a></h1>
+</div>
+<!--close-Header-part-->
+
+
+<!--top-Header-menu-->
+<div id="user-nav" class="navbar navbar-inverse">
+    <ul class="nav">
+        <li  class="" id="profile-messages" ><a title="" href="#"><i class="icon icon-user"></i>  <span class="text">Welcome {{ app.user.username }}</span></a>
+        </li>
+        <li class=""><a title="" href="{{ path('fos_user_security_logout') }}"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
+    </ul>
+</div>
+<!--close-top-Header-menu-->
+
+<!--sidebar-menu-->
+<div id="sidebar">
+    <ul>
+        <li><a href="/admin"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
+        <li><a href="/admin/users"><i class="icon icon-user"></i> <span>Users</span></a> </li>
+        <li><a href="/admin/products"><i class="icon icon-plus-sign"></i> <span>Products</span></a> </li>
+        <li><a href="/admin/orders"><i class="icon icon-shopping-cart"></i> <span>Orders</span></a></li>
+
+    </ul>
+</div>
+
+
+    {% block content %}{% endblock %}
+
+
+{% endblock %}

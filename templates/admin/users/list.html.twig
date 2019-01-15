@@ -1,0 +1,71 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block content %}
+
+    <div id="content">
+        <div id="content-header">
+            <div id="breadcrumb"><a href="/admin" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a
+                        href="/admin/users" class="current">Users</a></div>
+            <h1>Users</h1>
+        </div>
+        <div class="container-fluid">
+            <hr>
+            <div class="row-fluid">
+
+                <div class="span12">
+                    {{ block("error_messages", "errors_messages.html.twig") }}
+
+                    <a href="{{ path('add_user') }}" class="btn btn-success"><span class="icon-plus-sign"></span> Add
+                        New User</a>
+                    <div class="widget-box">
+                        <div class="widget-title"><span class="icon"><i class="icon-th"></i></span>
+                            <h5>All Users</h5>
+                        </div>
+                        <div class="widget-content nopadding">
+                            <table id="products" class="table table-bordered data-table">
+                                <thead>
+                                <tr>
+                                    <th>Username</th>
+                                    <th>Email</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for user in users %}
+                                    <tr>
+                                        <td>{{ user.username }}</td>
+                                        <td>{{ user.email }}</td>
+                                        <td>
+                                            <div style="text-align: center;">
+                                                <a href="{{ path('show_user', {'id': user.id}) }}" class="btn btn-primary btn-mini">Show</a>
+                                                <a href="{{ path('edit_user', {'id': user.id}) }}"
+                                                   class="btn btn-success btn-mini">Edit</a>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
+
+
+  {% block javascripts %}
+      {{ parent() }}
+      <script src="{{ asset('js/jquery.uniform.js') }}"></script>
+      <script src="{{ asset('js/select2.min.js') }}"></script>
+      <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+      <script src="{{ asset('js/matrix.js') }}"></script>
+      <script src="{{ asset('js/matrix.tables.js') }}"></script>
+  {% endblock %}
+

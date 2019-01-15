@@ -1,0 +1,9 @@
+fos_user:
+  resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+api_login:
+  path: /api/login
+api_register:
+  path: /api/register
+  defaults:
+    _controller: App\Controller\Api\UserController::registrationAction
+  methods: POST

@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "a5abbe3a-de64-483f-99ae-8f57018a9273",
+		"name": "API",
+		"description": "Mobile API's for:\n1. login\n2. register\n3. list products\n4. add product to cart\n5. submit order",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "api/login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\":\"admin\",\n\t\"password\":\"1234\"\n}"
+				},
+				"url": {
+					"raw": "kotob.com/api/login?",
+					"host": [
+						"kotob",
+						"com"
+					],
+					"path": [
+						"api",
+						"login"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "teka",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"disabled": true
+						}
+					]
+				},
+				"description": "login request"
+			},
+			"response": []
+		},
+		{
+			"name": "api/register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n            \"username\": \"admin\",\n            \"email\" : \"admin@gmail.com\",\n            \"plainPassword\" : {\n                \"first\" : \"1234\", \n                \"second\" : \"1234\"\n            }\n}"
+				},
+				"url": {
+					"raw": "kotob.com/api/register",
+					"host": [
+						"kotob",
+						"com"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/api/product",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1NDc1NDE5ODUsImV4cCI6MTU0NzU0NTU4NSwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoiYWRtaW4ifQ.u8_H3wQlC5zrUN881zh3rLXj1jFMYPaIpxNw34XevHtuyJ_M7bePekaqG1xsLVbAFAW8AhSUxmvjpVp3EjR7rlgWPPigWxcE93gNRpwvhHLq7MU7Ir8SCziK7pmMBNuQFB9ZmpRaT57YicqX1t5fTPv2eZKk1sG3RanPmQX7On3rpSUgyrFwqY8M6rYBj8HpfKPt7E3Y5ztYOHurgtJDj88rYmnRzHqHa5njis9j8OswjgBFvfMd52jxEqXLlYGnmVyWrwh1AIoFS3FOqxM8wIGD8WwQjMd-CJb5AgV_Cvl45s7lP_bDG7kILUfIVL3hBhED2y0AaGJp6foNkcfKFw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "kotob.com/api/product",
+					"host": [
+						"kotob",
+						"com"
+					],
+					"path": [
+						"api",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "kotob.com/api/product/1/add-to-cart",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1NDc1NDE5ODUsImV4cCI6MTU0NzU0NTU4NSwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoiYWRtaW4ifQ.u8_H3wQlC5zrUN881zh3rLXj1jFMYPaIpxNw34XevHtuyJ_M7bePekaqG1xsLVbAFAW8AhSUxmvjpVp3EjR7rlgWPPigWxcE93gNRpwvhHLq7MU7Ir8SCziK7pmMBNuQFB9ZmpRaT57YicqX1t5fTPv2eZKk1sG3RanPmQX7On3rpSUgyrFwqY8M6rYBj8HpfKPt7E3Y5ztYOHurgtJDj88rYmnRzHqHa5njis9j8OswjgBFvfMd52jxEqXLlYGnmVyWrwh1AIoFS3FOqxM8wIGD8WwQjMd-CJb5AgV_Cvl45s7lP_bDG7kILUfIVL3hBhED2y0AaGJp6foNkcfKFw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "kotob.com/api/product/10/add-to-cart",
+					"host": [
+						"kotob",
+						"com"
+					],
+					"path": [
+						"api",
+						"product",
+						"10",
+						"add-to-cart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "kotob.com/api/order/1/submit",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE1NDc1NDE5ODUsImV4cCI6MTU0NzU0NTU4NSwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoiYWRtaW4ifQ.u8_H3wQlC5zrUN881zh3rLXj1jFMYPaIpxNw34XevHtuyJ_M7bePekaqG1xsLVbAFAW8AhSUxmvjpVp3EjR7rlgWPPigWxcE93gNRpwvhHLq7MU7Ir8SCziK7pmMBNuQFB9ZmpRaT57YicqX1t5fTPv2eZKk1sG3RanPmQX7On3rpSUgyrFwqY8M6rYBj8HpfKPt7E3Y5ztYOHurgtJDj88rYmnRzHqHa5njis9j8OswjgBFvfMd52jxEqXLlYGnmVyWrwh1AIoFS3FOqxM8wIGD8WwQjMd-CJb5AgV_Cvl45s7lP_bDG7kILUfIVL3hBhED2y0AaGJp6foNkcfKFw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "kotob.com/api/order/33/submit",
+					"host": [
+						"kotob",
+						"com"
+					],
+					"path": [
+						"api",
+						"order",
+						"33",
+						"submit"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

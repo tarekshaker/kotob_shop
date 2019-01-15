@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Kotob Shop{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
+            <link rel="stylesheet" href="{{ asset('css/bootstrap-responsive.min.css') }}" />
+            <link rel="stylesheet" href="{{ asset('css/fullcalendar.css') }}" />
+            <link rel="stylesheet" href="{{ asset('css/matrix-style.css') }}" />
+            <link rel="stylesheet" href="{{ asset('css/uniform.css') }}" />
+            <link rel="stylesheet" href="{{ asset('css/select2.css') }}" />
+            <link rel="stylesheet" href="{{ asset('css/matrix-media.css') }}" />
+            <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.css') }}" />
+            <link rel="stylesheet" href="{{ asset('css/jquery.gritter.css') }}" />
+            <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+        {% endblock %}
+    </head>
+    <body>
+
+
+    <!--sidebar-menu-->
+        {% block body %}{% endblock %}
+
+        <!--Footer-part-->
+        {% block footer %}
+            <div class="row-fluid">
+                <div id="footer" class="span12"> 2018 &copy; Kotob Admin. Brought to you by Tarek Shaker </div>
+            </div>
+        {% endblock %}
+        <!--end-Footer-part-->
+
+        {% block javascripts %}
+            <script src="{{ asset('js/excanvas.min.js') }}"></script>
+            <script src="{{ asset('js/jquery.min.js') }}" ></script>
+            <script src="{{ asset('js/jquery.ui.custom.js') }}" ></script>
+            <script src="{{ asset('js/bootstrap.min.js') }}" ></script>
+
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,126 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block content %}
+
+    <div id="content">
+        <div id="content-header">
+            <div id="breadcrumb"><a href="/admin" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
+                    Home</a> <a
+                        href="/admin/orders" class="current">Orders</a></div>
+            <h1>Orders</h1>
+        </div>
+        <div class="container-fluid">
+            <hr>
+            <div class="row-fluid">
+
+                <div class="span12">
+                    {{ block("error_messages", "errors_messages.html.twig") }}
+
+                    <div class="widget-box">
+                        <div class="widget-title"><span class="icon"><i class="icon-th"></i></span>
+                            <h5>All Orders</h5>
+                        </div>
+                        <div class="widget-content nopadding">
+                            <table id="products" class="table table-bordered data-table">
+                                <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Username</th>
+                                    <th>Total Price</th>
+                                    <th>Status</th>
+                                    <th>Created at</th>
+                                    <th>Actions</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for order in orders %}
+                                    <tr>
+                                        <td>{{ order.id }}</td>
+                                        <td>{{ order.userId }}</td>
+                                        <td>{{ order.totalPrice }}</td>
+                                        <td>{{ order.status }}</td>
+                                        <td>{{ order.createdAt|date('Y-m-d H:i:s') }}</td>
+                                        <td>
+                                            <div style="text-align: center;">
+                                                <a href="{{ path('show_order_list', {'id': order.id}) }}"
+                                                   class="btn btn-primary btn-mini">Order List</a>
+                                                {% if (order.status == 'pending') %}
+                                                    <a class="confirm-order btn btn-success btn-mini" href="#"
+                                                       data-id="{{ order.id }}">Confirm Order</a>
+                                                {% endif %}
+                                            </div>
+
+                                        </td>
+                                    </tr>
+
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div id="confirmOrderModal" class="modal hide">
+        <div class="modal-header">
+            <button data-dismiss="modal" class="close" type="button">×</button>
+            <h3>Confirm Order#<span class="orderId"></span></h3>
+        </div>
+        <div class="modal-body">
+            <h5>Are you sure you want to confirm this order?</h5>
+        </div>
+        <div class="modal-footer">
+            <a data-dismiss="modal" class="btn btn-danger confirmOrder" href="#">Confirm</a>
+            <a data-dismiss="modal" class="btn btn-primary cancelConfrim" href="#">Cancel</a>
+        </div>
+    </div>
+
+
+{% endblock %}
+
+
+ {% block javascripts %}
+     {{ parent() }}
+     <script src="{{ asset('js/jquery.uniform.js') }}"></script>
+     <script src="{{ asset('js/select2.min.js') }}"></script>
+     <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+     <script src="{{ asset('js/matrix.js') }}"></script>
+     <script src="{{ asset('js/matrix.tables.js') }}"></script>
+
+     <script>
+
+         var orderConfirm = function (callback) {
+             var id;
+             $(".confirm-order").on("click", function (e) {
+                 e.preventDefault();
+                 id = e.target.getAttribute('data-id');
+                 $('.orderId').text(id);
+                 $("#confirmOrderModal").modal('show');
+             });
+
+             $(".confirmOrder").on("click", function (e) {
+                 callback(true, id);
+                 $("#confirmOrderModal").modal('hide');
+             });
+
+             $(".cancelConfrim").on("click", function () {
+                 callback(false);
+                 $("#confirmOrderModal").modal('hide');
+             });
+         };
+
+         orderConfirm(function (confirm, id) {
+             if (confirm) {
+                 fetch('/admin/orders/confirm_order/' + id, {
+                     method: 'PUT'
+                 }).then(res => window.location.reload());
+             }
+         });
+     </script>
+ {% endblock %}

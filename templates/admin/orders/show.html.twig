@@ -1,0 +1,56 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block content %}
+    <div id="content">
+        <div id="content-header">
+            <div id="breadcrumb"><a href="/admin" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a
+                        href="/admin/products" class="current">Orders</a></div>
+            <h1>Orders</h1>
+        </div>
+        <div class="container-fluid">
+            <hr>
+            <div class="row-fluid">
+                <div class="span6">
+                    <div class="widget-box">
+                        <div class="widget-title"><span class="icon"><i class="icon-th"></i></span>
+                            <h5>Order List</h5>
+                        </div>
+                        <div class="widget-content">
+                                <table id="ordersList" class="table table-bordered data-table">
+                                    <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Description</th>
+                                        <th>Price</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for product in orderList.products %}
+                                        <tr>
+                                            <td>{{ product.title }}</td>
+                                            <td>{{ product.description }}</td>
+                                            <td>{{ product.price }}</td>
+                                        </tr>
+
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            <input type="button" class="btn btn-danger" value="Back" onclick="history.back(-1)" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/jquery.uniform.js') }}"></script>
+    <script src="{{ asset('js/select2.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('js/matrix.js') }}"></script>
+    <script src="{{ asset('js/matrix.tables.js') }}"></script>
+{% endblock %}
+
